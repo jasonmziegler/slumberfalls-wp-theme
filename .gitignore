@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build outputs (development only - include in production)
+# assets/css/output.css
+
+# Local environment
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
