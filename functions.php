@@ -138,7 +138,21 @@ add_action( 'widgets_init', 'slumber_falls_widgets_init' );
  * Enqueue scripts and styles.
  */
 function slumber_falls_scripts() {
-	wp_enqueue_style( 'slumber-falls-style', get_stylesheet_uri(), array(), _S_VERSION );
+	// Main theme styles (Tailwind compiled)
+	wp_enqueue_style(
+		'slumber-falls-tailwind',
+		get_template_directory_uri() . '/assets/css/output.css',
+		array(),
+		filemtime( get_template_directory() . '/assets/css/output.css' )
+	);
+
+	// Keep original Underscores styles if needed
+	wp_enqueue_style(
+		'slumber-falls-style',
+		get_stylesheet_uri(),
+		array( 'slumber-falls-tailwind' ),
+		wp_get_theme()->get( 'Version' )
+	);
 	wp_style_add_data( 'slumber-falls-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'slumber-falls-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
