@@ -164,6 +164,11 @@ function slumber_falls_scripts() {
 add_action( 'wp_enqueue_scripts', 'slumber_falls_scripts' );
 
 /**
+ * Custom Post Types
+ */
+require get_template_directory() . '/inc/custom-post-types.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
