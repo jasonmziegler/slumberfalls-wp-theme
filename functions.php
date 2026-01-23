@@ -169,6 +169,11 @@ add_action( 'wp_enqueue_scripts', 'slumber_falls_scripts' );
 require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
+ * Custom Meta Boxes
+ */
+require get_template_directory() . '/inc/meta-boxes.php';
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
