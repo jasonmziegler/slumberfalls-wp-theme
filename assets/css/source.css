@@ -27,6 +27,121 @@
 	@apply border-b-2 border-white pb-1;
 }
 
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 9999;
+	display: none;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.mobile-menu-overlay.is-open {
+	display: flex;
+	opacity: 1;
+	align-items: center;
+	justify-content: center;
+}
+
+.mobile-menu-container {
+	background-color: #558EAF;
+	width: 100%;
+	height: 100%;
+	padding: 2rem;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+.mobile-menu-close {
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
+	background: none;
+	border: none;
+	color: white;
+	cursor: pointer;
+	padding: 0.5rem;
+	min-width: 44px;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mobile-menu-close:hover {
+	opacity: 0.8;
+}
+
+.mobile-navigation {
+	margin-top: 4rem;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mobile-menu-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-width: 400px;
+}
+
+.mobile-menu-list li {
+	margin-bottom: 1.5rem;
+}
+
+.mobile-menu-list li a {
+	display: block;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-align: center;
+	padding: 1rem;
+	min-height: 44px;
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+	border-radius: 0.5rem;
+}
+
+.mobile-menu-list li a:hover,
+.mobile-menu-list li a:focus {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-list .current-menu-item > a,
+.mobile-menu-list .current_page_item > a {
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 2px solid white;
+}
+
+/* Hamburger button tap target */
+.menu-toggle {
+	min-width: 44px;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* Desktop - hide mobile menu */
+@media (min-width: 768px) {
+	.mobile-menu-overlay {
+		display: none !important;
+	}
+}
+
 @layer utilities {
 	/* Hide scrollbar for carousel */
 	.hide-scrollbar {

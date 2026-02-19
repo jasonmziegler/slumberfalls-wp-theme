@@ -72,4 +72,32 @@
 
 			</div>
 		</div>
+
+		<!-- Mobile Menu Overlay -->
+		<div id="mobile-menu-overlay" class="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+			<div class="mobile-menu-container">
+				<!-- Close Button -->
+				<button class="mobile-menu-close" aria-label="Close navigation menu">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+
+				<!-- Mobile Navigation Links -->
+				<nav class="mobile-navigation" aria-label="Mobile navigation">
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'mobile-menu',
+							'container'      => false,
+							'menu_class'     => 'mobile-menu-list',
+							'fallback_cb'    => 'slumber_falls_mobile_fallback_menu',
+						)
+					);
+					?>
+				</nav>
+			</div>
+		</div><!-- #mobile-menu-overlay -->
+
 	</header><!-- #masthead -->

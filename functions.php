@@ -157,6 +157,15 @@ function slumber_falls_scripts() {
 
 	wp_enqueue_script( 'slumber-falls-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
+	// Enqueue mobile menu toggle script
+	wp_enqueue_script(
+		'slumber-falls-mobile-menu',
+		get_template_directory_uri() . '/assets/js/mobile-menu.js',
+		array(),
+		filemtime( get_template_directory() . '/assets/js/mobile-menu.js' ),
+		true
+	);
+
 	// Enqueue FAQ accordion script on FAQ archive page
 	if ( is_post_type_archive( 'faq' ) ) {
 		wp_enqueue_script(
@@ -209,6 +218,22 @@ function slumber_falls_fallback_menu() {
 	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/faqs/' ) ) . '" class="text-white hover:text-gray-200">FAQs</a></li>';
 	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/about/' ) ) . '" class="text-white hover:text-gray-200">About</a></li>';
 	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/contact/' ) ) . '" class="text-white hover:text-gray-200">Contact</a></li>';
+	echo '</ul>';
+}
+
+/**
+ * Mobile fallback menu if primary menu not assigned
+ */
+function slumber_falls_mobile_fallback_menu() {
+	echo '<ul id="mobile-menu" class="mobile-menu-list">';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/camps/' ) ) . '">Camps</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/activities/' ) ) . '">Activities</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/instructors/' ) ) . '">Instructors</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/retreats/' ) ) . '">Retreats</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/faqs/' ) ) . '">FAQs</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/about/' ) ) . '">About</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/contact/' ) ) . '">Contact</a></li>';
 	echo '</ul>';
 }
 
