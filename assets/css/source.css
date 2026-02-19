@@ -3,3 +3,46 @@
 @tailwind utilities;
 
 /* Custom base styles can be added here */
+
+/* Logo max-height */
+.custom-logo-link img {
+	max-height: 60px;
+	width: auto;
+}
+
+/* Primary menu styling */
+#primary-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#primary-menu li a {
+	@apply text-white hover:text-gray-200 transition-colors duration-200 text-base font-medium;
+}
+
+/* Active menu item highlighting */
+#primary-menu .current-menu-item > a,
+#primary-menu .current_page_item > a {
+	@apply border-b-2 border-white pb-1;
+}
+
+@layer utilities {
+	/* Hide scrollbar for carousel */
+	.hide-scrollbar {
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+	}
+
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;  /* Chrome, Safari, Opera */
+	}
+
+	/* Line clamp for text truncation */
+	.line-clamp-3 {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+}

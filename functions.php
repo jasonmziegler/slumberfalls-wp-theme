@@ -157,11 +157,60 @@ function slumber_falls_scripts() {
 
 	wp_enqueue_script( 'slumber-falls-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
+	// Enqueue FAQ accordion script on FAQ archive page
+	if ( is_post_type_archive( 'faq' ) ) {
+		wp_enqueue_script(
+			'slumber-falls-faq-accordion',
+			get_template_directory_uri() . '/assets/js/faq-accordion.js',
+			array(),
+			filemtime( get_template_directory() . '/assets/js/faq-accordion.js' ),
+			true
+		);
+	}
+
+	// Enqueue camp filters script on camp archive page
+	if ( is_post_type_archive( 'camp' ) ) {
+		wp_enqueue_script(
+			'slumber-falls-camp-filters',
+			get_template_directory_uri() . '/assets/js/camp-filters.js',
+			array(),
+			filemtime( get_template_directory() . '/assets/js/camp-filters.js' ),
+			true
+		);
+	}
+
+	// Enqueue carousel script on front page
+	if ( is_front_page() ) {
+		wp_enqueue_script(
+			'slumber-falls-carousel',
+			get_template_directory_uri() . '/assets/js/carousel.js',
+			array(),
+			filemtime( get_template_directory() . '/assets/js/carousel.js' ),
+			true
+		);
+	}
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'slumber_falls_scripts' );
+
+/**
+ * Fallback menu if primary menu not assigned
+ */
+function slumber_falls_fallback_menu() {
+	echo '<ul id="primary-menu" class="flex space-x-6">';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/' ) ) . '" class="text-white hover:text-gray-200">Home</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/camps/' ) ) . '" class="text-white hover:text-gray-200">Camps</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/activities/' ) ) . '" class="text-white hover:text-gray-200">Activities</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/instructors/' ) ) . '" class="text-white hover:text-gray-200">Instructors</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/retreats/' ) ) . '" class="text-white hover:text-gray-200">Retreats</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/faqs/' ) ) . '" class="text-white hover:text-gray-200">FAQs</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/about/' ) ) . '" class="text-white hover:text-gray-200">About</a></li>';
+	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/contact/' ) ) . '" class="text-white hover:text-gray-200">Contact</a></li>';
+	echo '</ul>';
+}
 
 /**
  * Custom Post Types
@@ -172,6 +221,11 @@ require get_template_directory() . '/inc/custom-post-types.php';
  * Custom Meta Boxes
  */
 require get_template_directory() . '/inc/meta-boxes.php';
+
+/**
+ * Form Handlers
+ */
+require get_template_directory() . '/inc/forms.php';
 
 /**
  * Implement the Custom Header feature.
