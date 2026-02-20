@@ -31,6 +31,38 @@ function slumber_falls_customize_register( $wp_customize ) {
 			)
 		);
 	}
+
+	// Footer Logo Section
+	$wp_customize->add_section(
+		'slumber_falls_footer_logo',
+		array(
+			'title'    => __( 'Footer Logo', 'slumber-falls' ),
+			'priority' => 40,
+		)
+	);
+
+	// Footer Logo Setting
+	$wp_customize->add_setting(
+		'footer_logo',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	// Footer Logo Control
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'footer_logo',
+			array(
+				'label'       => __( 'Footer Logo (White)', 'slumber-falls' ),
+				'description' => __( 'Upload a white logo on transparent background for the footer. Recommended size: 200x80px', 'slumber-falls' ),
+				'section'     => 'slumber_falls_footer_logo',
+				'mime_type'   => 'image',
+			)
+		)
+	);
 }
 add_action( 'customize_register', 'slumber_falls_customize_register' );
 
