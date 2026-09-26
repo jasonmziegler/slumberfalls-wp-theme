@@ -25,7 +25,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'slumber-falls' ); ?></a>
 
-	<header id="masthead" class="site-header sticky top-0 z-50 bg-[#558EAF] shadow-md">
+	<header id="masthead" class="site-header sticky top-0 z-50 bg-[#558EAF] shadow-md transition-all duration-300">
 		<div class="container mx-auto px-4">
 			<div class="flex items-center justify-between py-4">
 

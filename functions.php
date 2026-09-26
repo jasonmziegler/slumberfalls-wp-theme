@@ -135,6 +135,19 @@ function slumber_falls_widgets_init() {
 add_action( 'widgets_init', 'slumber_falls_widgets_init' );
 
 /**
+ * Enqueue Google Fonts for design system typography.
+ */
+function slumber_falls_enqueue_fonts() {
+	wp_enqueue_style(
+		'google-fonts',
+		'https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap',
+		array(),
+		null
+	);
+}
+add_action( 'wp_enqueue_scripts', 'slumber_falls_enqueue_fonts' );
+
+/**
  * Enqueue scripts and styles.
  */
 function slumber_falls_scripts() {
@@ -165,6 +178,17 @@ function slumber_falls_scripts() {
 		filemtime( get_template_directory() . '/assets/js/mobile-menu.js' ),
 		true
 	);
+
+	// Enqueue sticky CTA script (not on homepage)
+	if ( ! is_front_page() ) {
+		wp_enqueue_script(
+			'slumber-falls-sticky-cta',
+			get_template_directory_uri() . '/assets/js/sticky-cta.js',
+			array(),
+			filemtime( get_template_directory() . '/assets/js/sticky-cta.js' ),
+			true
+		);
+	}
 
 	// Enqueue FAQ accordion script on FAQ archive page
 	if ( is_post_type_archive( 'faq' ) ) {
@@ -236,6 +260,35 @@ function slumber_falls_mobile_fallback_menu() {
 	echo '<li class="menu-item"><a href="' . esc_url( home_url( '/contact/' ) ) . '">Contact</a></li>';
 	echo '</ul>';
 }
+
+/**
+ * Enqueue interactive scripts and styles (scroll animations, header scroll, patterns).
+ */
+function slumber_falls_enqueue_interactive_scripts() {
+	wp_enqueue_script(
+		'slumber-falls-scroll-animations',
+		get_template_directory_uri() . '/assets/js/scroll-animations.js',
+		array(),
+		_S_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
+		'slumber-falls-header-scroll',
+		get_template_directory_uri() . '/assets/js/header-scroll.js',
+		array(),
+		_S_VERSION,
+		true
+	);
+
+	wp_enqueue_style(
+		'slumber-falls-patterns',
+		get_template_directory_uri() . '/assets/css/patterns.css',
+		array( 'slumber-falls-style' ),
+		_S_VERSION
+	);
+}
+add_action( 'wp_enqueue_scripts', 'slumber_falls_enqueue_interactive_scripts' );
 
 /**
  * Custom Post Types

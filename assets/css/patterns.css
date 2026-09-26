@@ -1,0 +1,59 @@
+/**
+ * Pattern Library
+ *
+ * Reusable CSS texture patterns applied as overlay divs.
+ * Usage: position absolutely inside a relative parent, set low opacity (3-10%).
+ *
+ * @package Slumber_Falls
+ */
+
+/* Scroll animation initial hidden state */
+.sf-scroll-hidden {
+	opacity: 0;
+}
+
+/* Dot pattern - light (dark dots for light backgrounds) */
+.pattern-dots-light {
+	background-image: radial-gradient( circle, rgba( 0, 0, 0, 0.15 ) 1px, transparent 1px );
+	background-size: 20px 20px;
+}
+
+/* Dot pattern - white (white dots for dark backgrounds) */
+.pattern-dots-white {
+	background-image: radial-gradient( circle, rgba( 255, 255, 255, 1 ) 1.5px, transparent 1.5px );
+	background-size: 24px 24px;
+}
+
+/* Grid pattern - light (dark grid lines for light backgrounds) */
+.pattern-grid-light {
+	background-image:
+		linear-gradient( rgba( 0, 0, 0, 0.1 ) 1px, transparent 1px ),
+		linear-gradient( 90deg, rgba( 0, 0, 0, 0.1 ) 1px, transparent 1px );
+	background-size: 30px 30px;
+}
+
+/* Grid pattern - white (white grid lines for dark backgrounds) */
+.pattern-grid-white {
+	background-image:
+		linear-gradient( rgba( 255, 255, 255, 0.15 ) 1px, transparent 1px ),
+		linear-gradient( 90deg, rgba( 255, 255, 255, 0.15 ) 1px, transparent 1px );
+	background-size: 40px 40px;
+}
+
+/* Diagonal stripe pattern */
+.pattern-diagonal {
+	background-image: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 10px,
+		rgba( 0, 0, 0, 0.05 ) 10px,
+		rgba( 0, 0, 0, 0.05 ) 11px
+	);
+}
+
+/* Noise / grunge texture pattern (SVG data URI) */
+.pattern-noise {
+	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E" );
+	background-size: 200px 200px;
+	background-repeat: repeat;
+}

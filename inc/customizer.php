@@ -32,6 +32,100 @@ function slumber_falls_customize_register( $wp_customize ) {
 		);
 	}
 
+	// Homepage Hero Section
+	$wp_customize->add_section(
+		'slumber_falls_hero',
+		array(
+			'title'       => __( 'Homepage Hero', 'slumber-falls' ),
+			'description' => __( 'Background image for the homepage hero section. Recommended: 1920×1080px or larger. Falls back to a blue gradient if no image is set.', 'slumber-falls' ),
+			'priority'    => 30,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'hero_background_image',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'absint',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'hero_background_image',
+			array(
+				'label'       => __( 'Hero Background Image', 'slumber-falls' ),
+				'description' => __( 'Upload or select a photo from the media library.', 'slumber-falls' ),
+				'section'     => 'slumber_falls_hero',
+				'mime_type'   => 'image',
+			)
+		)
+	);
+
+	// Pre-Footer CTA Section
+	$wp_customize->add_section(
+		'slumber_falls_pre_footer_cta',
+		array(
+			'title'       => __( 'Pre-Footer CTA', 'slumber-falls' ),
+			'description' => __( 'Default call-to-action section shown above the footer on all inner pages. Can be overridden per page via the page editor.', 'slumber-falls' ),
+			'priority'    => 35,
+		)
+	);
+
+	$cta_settings = array(
+		'pre_footer_cta_heading'   => array(
+			'default' => __( 'Ready to Join Us?', 'slumber-falls' ),
+			'label'   => __( 'Heading', 'slumber-falls' ),
+			'type'    => 'text',
+		),
+		'pre_footer_cta_subtext'   => array(
+			'default' => __( 'Experience 68+ years of faith-based adventure at Slumber Falls Camp.', 'slumber-falls' ),
+			'label'   => __( 'Subtext', 'slumber-falls' ),
+			'type'    => 'textarea',
+		),
+		'pre_footer_cta_btn1_label' => array(
+			'default' => __( 'Explore Camps', 'slumber-falls' ),
+			'label'   => __( 'Button 1 Label', 'slumber-falls' ),
+			'type'    => 'text',
+		),
+		'pre_footer_cta_btn1_url'  => array(
+			'default' => '/camps/',
+			'label'   => __( 'Button 1 URL', 'slumber-falls' ),
+			'type'    => 'url',
+		),
+		'pre_footer_cta_btn2_label' => array(
+			'default' => __( 'Contact Us', 'slumber-falls' ),
+			'label'   => __( 'Button 2 Label', 'slumber-falls' ),
+			'type'    => 'text',
+		),
+		'pre_footer_cta_btn2_url'  => array(
+			'default' => '/contact/',
+			'label'   => __( 'Button 2 URL', 'slumber-falls' ),
+			'type'    => 'url',
+		),
+	);
+
+	foreach ( $cta_settings as $key => $args ) {
+		$wp_customize->add_setting(
+			$key,
+			array(
+				'default'           => $args['default'],
+				'sanitize_callback' => 'sanitize_text_field',
+				'transport'         => 'refresh',
+			)
+		);
+		$wp_customize->add_control(
+			$key,
+			array(
+				'label'   => $args['label'],
+				'section' => 'slumber_falls_pre_footer_cta',
+				'type'    => $args['type'],
+			)
+		);
+	}
+
 	// Footer Logo Section
 	$wp_customize->add_section(
 		'slumber_falls_footer_logo',

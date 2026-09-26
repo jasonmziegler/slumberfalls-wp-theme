@@ -33,6 +33,8 @@ get_header();
 
 	</main><!-- #main -->
 
+<?php get_template_part( 'template-parts/sections/pre-footer-cta', null, array( 'wave_from' => 'white' ) ); ?>
+
 <?php
 get_sidebar();
 get_footer();

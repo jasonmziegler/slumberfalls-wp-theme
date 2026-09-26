@@ -4,6 +4,15 @@
 
 /* Custom base styles can be added here */
 
+/* Ensure main content area always has a white background.
+ * This prevents the body background image (parallax hero) from bleeding
+ * through sections that have no explicit background-color set.
+ * Sections with explicit bg-* classes (bg-brand-blue, bg-gray-50, etc.)
+ * still render their own backgrounds correctly. */
+.site-main {
+	background-color: #ffffff;
+}
+
 /* Logo max-height */
 .custom-logo-link img {
 	max-height: 60px;
@@ -155,15 +164,17 @@
 
 /* Footer Links with Underlines */
 .footer-link {
+	display: inline-block;
 	color: white;
 	text-decoration: underline;
 	text-underline-offset: 3px;
 	text-decoration-thickness: 1px;
-	transition: opacity 0.2s ease;
+	transition: all 0.3s ease;
 }
 
 .footer-link:hover {
-	opacity: 0.8;
+	color: #FAEFC9;
+	transform: translateX(4px);
 }
 
 /* Footer Contact Spacing */
@@ -344,6 +355,11 @@
 	.sticky-cta-desktop {
 		display: none;
 	}
+}
+
+/* Header scrolled state - darkens background and adds shadow on scroll */
+.header-scrolled {
+	@apply bg-brand-blue-900/95 shadow-lg;
 }
 
 @layer utilities {

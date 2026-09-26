@@ -11,7 +11,16 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer bg-[#558EAF] text-white py-16">
+	<!-- Wave Divider: CTA → Footer -->
+	<?php get_template_part( 'template-parts/components/wave-divider', null, array(
+		'color'  => 'brand-blue-800',
+		'bg'     => 'brand-blue',
+		'height' => 'h-12 md:h-20',
+	) ); ?>
+
+	<footer id="colophon" class="site-footer relative bg-gradient-to-b from-[#111F37] to-[#081027] text-white py-16">
+		<!-- Dot Pattern Overlay -->
+		<div class="absolute inset-0 opacity-[0.06] pattern-dots-white pointer-events-none"></div>
 		<div class="container mx-auto px-6">
 
 			<!-- Main Footer Content - 3 Column Layout -->
@@ -34,7 +43,7 @@
 					</div>
 					<?php else : ?>
 					<!-- Fallback: Site Name -->
-					<h3 class="text-2xl font-bold mb-6">
+					<h3 class="font-heading text-2xl font-bold mb-6">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-white hover:text-white" rel="home">
 							<?php bloginfo( 'name' ); ?>
 						</a>
@@ -42,8 +51,8 @@
 					<?php endif; ?>
 
 					<!-- Contact Info -->
-					<div class="footer-contact space-y-3 text-base leading-relaxed">
-						<h4 class="text-xl font-bold mb-4"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h4>
+					<div class="footer-contact font-sans space-y-3 text-base leading-relaxed">
+						<h4 class="font-heading text-xl font-bold mb-4"><?php echo esc_html( get_bloginfo( 'name' ) ); ?></h4>
 						<p>
 							3610 River Road, New Braunfels, TX 78132
 						</p>
@@ -62,7 +71,7 @@
 
 				<!-- Center Section: Quick Links -->
 				<div class="footer-links md:col-span-1">
-					<ul class="space-y-3 text-base">
+					<ul class="font-sans space-y-3 text-base">
 						<li><a href="<?php echo esc_url( home_url( '/camps/' ) ); ?>" class="footer-link">Summer Camp</a></li>
 						<li><a href="<?php echo esc_url( home_url( '/facilities/' ) ); ?>" class="footer-link">Facilities</a></li>
 						<li><a href="<?php echo esc_url( home_url( '/join-our-team/' ) ); ?>" class="footer-link">Join Our Team</a></li>
@@ -74,8 +83,8 @@
 
 				<!-- Right Section: Social Media -->
 				<div class="footer-social md:col-span-1">
-					<h3 class="text-xl font-bold mb-6">Follow</h3>
-					<ul class="space-y-3 text-base">
+					<h3 class="font-heading text-xl font-bold mb-6">Follow</h3>
+					<ul class="font-sans space-y-3 text-base">
 						<li>
 							<a href="#" class="footer-link flex items-center gap-2">
 								<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +115,7 @@
 			</div>
 
 			<!-- Copyright Row -->
-			<div class="border-t border-white border-opacity-30 pt-6 text-center text-sm">
+			<div class="border-t border-white border-opacity-30 pt-6 text-center text-sm font-sans">
 				<p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> Slumber Falls Camp. All rights reserved.</p>
 			</div>
 		</div>
